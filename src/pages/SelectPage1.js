@@ -2,7 +2,7 @@ import React from 'react';
 
 const SelectPage1 = () => {
   return (
-    <di className="flex justify-center">
+    <div className="flex justify-center">
     <div className="flex flex-col justify-center items-center max-w-[400px] w-full bg-black">
       {/* Header 시작 */}
       <header className="">
@@ -15,11 +15,15 @@ const SelectPage1 = () => {
       {/* Header 끝 */}
       {/* Character 설명 시작 */}
       <div className="relative">
+        {/* Gradient 배경 추가 */}
+        <div className="relative">
         <img
           src="/assets/SelectPage1/Character1.png"
           alt="Character1"
           className="w-89"
         />
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent" />
+        </div>
         <div className='flex flex-row absolute text-white bottom-[7.5rem] left-5 gap-x-[0.3rem]'>
           <p className="text-[2rem]">
             성진우
@@ -32,9 +36,9 @@ const SelectPage1 = () => {
         &quot;...일어나라&quot;
         </div>
         <div className="flex flex-row justify-between ">
-        <div className="absolute text-white bottom-[4rem] left-[1.5rem] text-[1rem] rounded-md py-[0.01rem] px-[0.5rem] bg-[#FCC729]">#상남자</div>
-        <div className="absolute text-white bottom-[4rem] left-[6.2rem] text-[1rem] rounded-md py-[0.01rem] px-[0.5rem] bg-[#FCC729]">#초능력자</div>
-        <div className="absolute text-white bottom-[4rem] left-[11.7rem] text-[1rem] rounded-md py-[0.01rem] px-[0.5rem] bg-[#FCC729]">#쿨내</div>
+        <div className="absolute text-white bottom-[4rem] left-[1.5rem] text-[1rem] rounded-full py-[0.01rem] px-[0.5rem] bg-[#FCC729]">#상남자</div>
+        <div className="absolute text-white bottom-[4rem] left-[6.2rem] text-[1rem] rounded-full py-[0.01rem] px-[0.5rem] bg-[#FCC729]">#초능력자</div>
+        <div className="absolute text-white bottom-[4rem] left-[11.7rem] text-[1rem] rounded-full py-[0.01rem] px-[0.5rem] bg-[#FCC729]">#쿨내</div>
         </div>
       {/* Character 설명 끝 */}
       {/* 별점 시작 */}
@@ -46,12 +50,12 @@ const SelectPage1 = () => {
       {/* 별점 끝 */}
       </div>
       {/* Button 시작 */}
-        <div className="my-[3rem] rounded-md py-[0.5rem] px-[6rem] bg-white">
+        <button className="my-[3rem] rounded-full py-[0.5rem] px-[6rem] bg-white">
           다른 주인공 만나러 가기 💖
-        </div>
+        </button>
       {/* Button 끝 */}
     </div>
-    </di>
+    </div>
   );
 };
 

@@ -10,6 +10,7 @@ const Header = () => {
         <Link to="/SelectPage1">선택화면 1로 이동</Link>
         <Link to="/pageB">Page B로 이동</Link>
         <Link to="/pageC">Page C로 이동</Link>
+        <Link to="/FinalResultPage1">최종 결과 화면1로 이동</Link>
       </div>
     </div>
   );
