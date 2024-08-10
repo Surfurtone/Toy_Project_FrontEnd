@@ -35,19 +35,23 @@ const SelectPage1 = () => {
 
         {/* Character 설명 시작 */}
         <div className="relative">
+           {/* Gradient 배경 추가 */}
+        <div className="relative">
           <img src={character.image} alt="Character" className="w-89" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent" />
+        </div>
           <div className="flex flex-row absolute text-white bottom-[7.5rem] left-5 gap-x-[0.3rem]">
             <p className="text-[2rem]">{character.name}</p>
             <p className="pt-5 text-[1rem]">{character.age}</p>
           </div>
-          <div className="absolute text-white bottom-[6rem] left-[1.6rem] text-[1.4rem]">
+          <div className="absolute text-white bottom-[5.5rem] left-[1.6rem] text-[1.4rem]">
             "{character.quote}"
           </div>
           <div className="flex flex-row justify-between">
             {character.tags.map((tag, index) => (
               <div
                 key={index}
-                className="absolute text-white bottom-[4rem] left-[1.5rem] text-[1rem] rounded-md py-[0.01rem] px-[0.5rem] bg-[#FCC729]"
+                className="absolute text-white bottom-[4rem] left-[1.5rem] text-[1rem] rounded-full py-[0.01rem] px-[0.5rem] bg-[#FCC729]"
                 style={{ left: `${1.5 + index * 4.7}rem` }}
               >
                 {tag}
@@ -66,7 +70,7 @@ const SelectPage1 = () => {
 
         {/* Button 시작 */}
         <div
-          className="my-[3rem] rounded-md py-[0.5rem] px-[6rem] bg-white cursor-pointer"
+          className="my-[3rem] rounded-full py-[0.5rem] px-[6rem] bg-white cursor-pointer"
           onClick={handleNextCharacter}
         >
           다른 주인공 만나러 가기 💖
