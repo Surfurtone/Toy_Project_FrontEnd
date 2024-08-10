@@ -3,8 +3,8 @@ import { Route, Routes } from 'react-router-dom';
 import Header from './pages/Header';
 import Main from './pages/Main';
 import SelectPage1 from './pages/SelectPage1';
-import PageB from './pages/PageB';
-import PageC from './pages/PageC';
+import FinalScreen from './pages/FinalScreen';
+import FinalSelectedScreen from './pages/FinalSelectedScreen';
 import NotFound from './pages/NotFound';
 
 const App = () => {
@@ -14,8 +14,8 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/SelectPage1/*" element={<SelectPage1 />} />
-        <Route path="/pageB" element={<PageB />} />
-        <Route path="/pageC" element={<PageC />} />
+        <Route path="/FinalScreen" element={<FinalScreen />} />
+        <Route path="/FinalSelectedScreen" element={<FinalSelectedScreen />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </div>
