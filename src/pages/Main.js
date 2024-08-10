@@ -4,7 +4,7 @@ const Main = () => {
   return (
     <div className="bg-gray-300 flex min-h-screen justify-center">
       <div className="w-full max-w-[400px] bg-white overflow-x-hidden">
-        <div className="py-9 bg-[#151515] rounded-bl-3xl">
+        <div className="py-9 bg-[#151515]">
           <header className="flex justify-center text-white py-6">
             캐릭터 기반 웹툰 추천 서비스
           </header>
