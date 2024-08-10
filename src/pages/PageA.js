@@ -18,7 +18,14 @@ const pageA = () => {
                 29C
               </div>
             </div>
-            <div className="relative rounded-[28px] h-36 overflow-hidden bg-white">
+            <div
+              className="relative rounded-[28px] h-36 overflow-hidden bg-white"
+              style={{
+                backgroundImage: `url('/assets/testIMG.png')`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+              }}
+            >
               <div className="absolute left-[20px] top-[16px] z-10 text-xl">
                 Main Content
               </div>
