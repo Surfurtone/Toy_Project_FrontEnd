@@ -1,64 +1,84 @@
 import React from 'react';
-import { useState } from 'react';
+import ChoiceBox from '../components/ChoiceBox';
+
+// import ch_ex1 from '/assets/ch_example1.png';
 
 const PageC = () => {
-  const [messages, setMessages] = useState([
-    { text: '안녕 이음아, 오늘 하루는 어떻더냐?', isUser: true },
-    { text: '안녕하세요 혁원 어르신, 오늘은 참 맑아요', isUser: false },
+  const exampleObj = [
     {
-      text: '허허, 고놈 참 말 이쁘게 하는구나. 어디 바둑은 잘하냐?',
-      isUser: true,
+      id: 1,
+      img: '/assets/ch_example1.png',
+      characterName: '성진우',
+      characterAge: 25,
+      content: '...벌레가 말을 다 하네?',
     },
     {
-      text: '저는 바둑을 그렇게 잘하는 것 같지는 않아요. 다만 혁원 어르신께서 바둑을 좋아하신다면 저는 꼭 한 수 배우고 싶은 마음이에요.',
-      isUser: false,
+      id: 2,
+      img: '/assets/ch_example2.png',
+      characterName: '김재형',
+      characterAge: 26,
+      content: '집에 가고 싶다...',
     },
-  ]);
-
-  const [input, setInput] = useState('');
-
-  const handleSend = () => {
-    if (input.trim() === '') return;
-
-    setMessages([...messages, { text: input, isUser: true }]);
-    setInput('');
-  };
+    {
+      id: 3,
+      img: '/assets/ch_example3.png',
+      characterName: '권혁원',
+      characterAge: 28,
+      content: '...일어나라',
+    },
+    {
+      id: 3,
+      img: '/assets/ch_example3.png',
+      characterName: '권혁원',
+      characterAge: 28,
+      content: '...일어나라',
+    },
+    {
+      id: 3,
+      img: '/assets/ch_example3.png',
+      characterName: '권혁원',
+      characterAge: 28,
+      content: '...일어나라',
+    },
+    {
+      id: 3,
+      img: '/assets/ch_example3.png',
+      characterName: '권혁원',
+      characterAge: 28,
+      content: '...일어나라',
+    },
+  ];
 
   return (
-    <div className=" bg-red-100 flex flex-col justify-between p-4">
-      <div className="flex justify-center items-center bg-white rounded-full w-16 h-8 mx-auto mb-4">
-        오늘
-      </div>
-
-      {/* 사용자 채팅 */}
-      <div className="flex flex-col gap-2">
-        {messages.map((message, index) => (
-          <div
-            key={index}
-            className={`p-3 rounded-xl max-w-[70%] ${
-              message.isUser
-                ? 'bg-white self-end text-right'
-                : 'bg-yellow-400 self-start text-left'
-            }`}
-          >
-            <div className="text-sm font-semibold">{message.text}</div>
-          </div>
-        ))}
-      </div>
-      <div className="flex items-center mt-4 bg-gray-800 p-2 rounded-full">
-        <input
-          type="text"
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-          placeholder="주인공에게 하고 싶은 말을 입력하세요"
-          className="bg-transparent flex-grow text-white outline-none px-2"
-        />
-        <button
-          onClick={handleSend}
-          className="bg-yellow-500 text-black p-2 rounded-full ml-2"
-        >
-          ➤
-        </button>
+    <div className="bg-gray-300 flex min-h-screen justify-center">
+      <div className="w-full max-w-[400px] bg-white overflow-x-hidden">
+        <div className="pt-5 pb-12 bg-[#D9D9D9] rounded-bl-3xl">
+          <header className="flex justify-center items-center pb-5">
+            <img
+              src="/assets/SelectPage1/Logo.png"
+              alt="Example"
+              className="h-auto"
+            />
+          </header>
+          <main className="px-3.5 h-[710px] overflow-y-scroll overflow-auto no-scrollbar">
+            <div className="flex flex-col gap-y-4">
+              {exampleObj.map((item) => (
+                <ChoiceBox
+                  key={item.id}
+                  img={item.img}
+                  characterName={item.characterName}
+                  characterAge={item.characterAge}
+                  content={item.content}
+                />
+              ))}
+            </div>
+          </main>
+          <footer className="pt-12 flex justify-center">
+            <div className="bg-white w-4/5 py-2 rounded-2xl font-bold text-center cursor-pointer">
+              내 운명은 누구일까? 💕
+            </div>
+          </footer>
+        </div>
       </div>
     </div>
   );
