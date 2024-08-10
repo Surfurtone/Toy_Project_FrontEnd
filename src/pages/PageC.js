@@ -52,7 +52,7 @@ const PageC = () => {
   return (
     <div className="bg-gray-300 flex min-h-screen justify-center">
       <div className="w-full max-w-[400px] bg-white overflow-x-hidden">
-        <div className="pt-5 pb-12 bg-[#D9D9D9] rounded-bl-3xl">
+        <div className="pt-5 pb-12 bg-[#151515]">
           <header className="flex justify-center items-center pb-5">
             <img
               src="/assets/SelectPage1/Logo.png"
