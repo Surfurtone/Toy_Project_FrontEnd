@@ -4,7 +4,7 @@ import Header from './pages/Header';
 import Main from './pages/Main';
 import SelectPage1 from './pages/SelectPage1';
 import FinalScreen from './pages/FinalScreen';
-import PageC from './pages/PageC';
+import FinalSelectedScreen from './pages/FinalSelectedScreen';
 import NotFound from './pages/NotFound';
 
 const App = () => {
@@ -15,7 +15,7 @@ const App = () => {
         <Route path="/" element={<Main />} />
         <Route path="/SelectPage1/*" element={<SelectPage1 />} />
         <Route path="/FinalScreen" element={<FinalScreen />} />
-        <Route path="/pageC" element={<PageC />} />
+        <Route path="/FinalSelectedScreen" element={<FinalSelectedScreen />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </div>
