@@ -17,7 +17,7 @@ const FinalScreen = () => {
   const [input, setInput] = useState('');
   const messagesEndRef = useRef(null);
   const pk = '주인공의 PK'; // 주인공의 PK 값을 여기에 설정하세요.
-  const apiUrl = `https://bd6e-117-110-136-19.ngrok-free.app/redoc/${pk}/`; // API 엔드포인트 URL을 설정하세요.
+  const apiUrl = `http://bd6e-117-110-136-19.ngrok-free.app/api/webtoon/chatbot1/`; // API 엔드포인트 URL을 설정하세요.
 
   const handleSend = async () => {
     if (input.trim() === '') return;
@@ -108,7 +108,7 @@ const FinalScreen = () => {
               {messages.map((message, index) => (
                 <div
                   key={index}
-                  className={`p-2 max-w-[70%] ${
+                  className={`p-2 px-4 max-w-[70%] ${
                     message.isUser
                       ? 'bg-white self-end text-right'
                       : 'bg-yellow-400 self-start text-left'
@@ -127,7 +127,7 @@ const FinalScreen = () => {
           </div>
 
           {/* 채팅 입력창 */}
-          <div className="flex items-center bg-gray-800 px-2 py-2 rounded-full">
+          <div className="flex items-center bg-gray-800 px-2 py-2 rounded-full border border-white">
             <input
               type="text"
               value={input}
