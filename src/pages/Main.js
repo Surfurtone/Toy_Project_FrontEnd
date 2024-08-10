@@ -1,6 +1,15 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Main = () => {
+  const navigate = useNavigate();
+  const [choice, setChoice] = React.useState('');
+
+  const onChoiceChange = (choice) => {
+    setChoice(choice);
+    navigate('/SelectPage1/*');
+  };
+
   return (
     <div className="bg-gray-300 flex min-h-screen justify-center">
       <div className="w-full max-w-[400px] bg-white overflow-x-hidden">
@@ -24,7 +33,8 @@ const Main = () => {
             </div>
             <div className="flex flex-col items-center gap-4">
               <div
-                className="flex h-20  items-center bg-[#F3DADA] rounded-l-full rounded-r-3xl"
+                className="flex h-20  items-center bg-[#F3DADA] rounded-l-full rounded-r-3xl cursor-pointer"
+                onClick={() => onChoiceChange('female')}
                 // style={{
                 //   borderTopLeftRadius: '9999px',
                 //   borderBottomLeftRadius: '9999px',
@@ -45,7 +55,10 @@ const Main = () => {
                   <br /> 여자 주인공을 선택하세요."
                 </p>
               </div>
-              <div className="flex h-20 rounded-r-full items-center bg-[#DDDEF6]">
+              <div
+                className="flex h-20 rounded-r-full items-center bg-[#DDDEF6] cursor-pointer"
+                onClick={() => onChoiceChange('male')}
+              >
                 <p className="text-sm px-4 font-semibold">
                   "당신을 매료시킬
                   <br /> 남자 주인공을 선택하세요."
