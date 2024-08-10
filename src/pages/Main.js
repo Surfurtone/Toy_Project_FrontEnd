@@ -7,7 +7,7 @@ const Main = () => {
 
   const onChoiceChange = (choice) => {
     setChoice(choice);
-    navigate('/SelectPage1/*');
+    navigate('/SelectPage1/*', { state: choice });
   };
 
   return (

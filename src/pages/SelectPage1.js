@@ -1,6 +1,11 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 
 const SelectPage1 = () => {
+  const location = useLocation();
+  const choice = location.state;
+  const [value, setValue] = useState('');
+
   const [character, setCharacter] = useState({
     name: '성진우',
     age: 25,
@@ -20,6 +25,28 @@ const SelectPage1 = () => {
     });
   };
 
+  useEffect(() => {
+    fetch(`https://26e1-117-110-136-19.ngrok-free.app/api/webtoon/${choice}/`, {
+      method: 'POST',
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then((json) => {
+        setValue(json);
+      })
+      .catch((error) => {
+        console.error('Error fetching data:', error);
+      });
+  }, []);
+
+  useEffect(() => {
+    console.log(value);
+  }, [value]);
+
   return (
     <di className="flex justify-center">
       <div className="flex flex-col justify-center items-center max-w-[400px] w-full bg-black">
@@ -35,11 +62,11 @@ const SelectPage1 = () => {
 
         {/* Character 설명 시작 */}
         <div className="relative">
-           {/* Gradient 배경 추가 */}
-        <div className="relative">
-          <img src={character.image} alt="Character" className="w-89" />
-          <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent" />
-        </div>
+          {/* Gradient 배경 추가 */}
+          <div className="relative">
+            <img src={character.image} alt="Character" className="w-89" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent" />
+          </div>
           <div className="flex flex-row absolute text-white bottom-[7.5rem] left-5 gap-x-[0.3rem]">
             <p className="text-[2rem]">{character.name}</p>
             <p className="pt-5 text-[1rem]">{character.age}</p>
