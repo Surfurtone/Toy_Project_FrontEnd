@@ -1,6 +1,12 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Main = () => {
+  const navigate = useNavigate();
+  const handleNextPage = () => {
+    navigate('/SelectPage1');
+  };
+
   return (
     <div className="bg-gray-300 flex min-h-screen justify-center">
       <div className="w-full max-w-[400px] bg-white overflow-x-hidden">
@@ -22,6 +28,9 @@ const Main = () => {
               <div>나만의 주인공을 만나고</div>
               <div>당신에게 꼭 맞는 웹툰을 발견하세요!”</div>
             </div>
+            <button className="bg-white" onClick={handleNextPage}>
+              다음 페이지로
+            </button>
             <div className="flex flex-col items-center gap-4">
               <div
                 className="flex h-20  items-center bg-[#F3DADA] rounded-l-full rounded-r-3xl"
