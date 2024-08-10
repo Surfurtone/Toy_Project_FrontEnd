@@ -16,12 +16,40 @@ const FinalScreen = () => {
 
   const [input, setInput] = useState('');
   const messagesEndRef = useRef(null);
+  const pk = '주인공의 PK'; // 주인공의 PK 값을 여기에 설정하세요.
+  const apiUrl = `https://bd6e-117-110-136-19.ngrok-free.app/redoc/${pk}/`; // API 엔드포인트 URL을 설정하세요.
 
-  const handleSend = () => {
+  const handleSend = async () => {
     if (input.trim() === '') return;
 
-    setMessages([...messages, { text: input, isUser: true }]);
-    setInput('');
+    // 사용자가 입력한 메시지를 먼저 화면에 추가
+    const userMessage = { text: input, isUser: true };
+    setMessages([...messages, userMessage]);
+
+    try {
+      // API에 POST 요청을 보내서 서버로 메시지를 전송
+      const response = await fetch(apiUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ question: input }),
+      });
+
+      if (!response.ok) {
+        throw new Error('서버 응답에 실패했습니다.');
+      }
+
+      const data = await response.json();
+
+      // 서버에서 받은 응답 메시지를 화면에 추가
+      const serverMessage = { text: data.answer, isUser: false };
+      setMessages((prevMessages) => [...prevMessages, serverMessage]);
+    } catch (error) {
+      console.error('Error fetching answer from the server:', error);
+    } finally {
+      setInput(''); // 입력 필드 초기화
+    }
   };
 
   const handleKeyPress = (e) => {
@@ -36,12 +64,21 @@ const FinalScreen = () => {
 
   return (
     <div className="bg-gray-300 flex min-h-screen justify-center">
-      <div className="max-w-[400px] bg-slate-100">
+      <div className="max-w-[400px] w-full overflow-x-hidden bg-slate-100">
         <div className="px-[14px] py-[20px] flex flex-col gap-4 justify-between bg-black">
           {/* 헤더 바 */}
           <div className="flex justify-center text-white relative">
             <div className="text-[25px] font-bold">성진우</div>
-            <div className="absolute left-[10px] z-10 text-xl">{'<'}</div>
+            <div className="absolute left-[10px] z-10 text-xl">
+              <button
+                className="w-[25px] h-[25px] bg-white rounded-sm"
+                style={{
+                  backgroundImage: `url('/assets/FinalScreen/backArrow.png')`,
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center',
+                }}
+              ></button>
+            </div>
           </div>
 
           <div className="bg-black text-white text-[12px] text-center">
@@ -59,7 +96,10 @@ const FinalScreen = () => {
           />
 
           <div className="flex flex-col justify-between p-4">
-            <div className="flex justify-center items-center bg-white rounded-full w-16 h-8 mx-auto mb-4">
+            <div
+              className="flex justify-center items-center bg-white rounded-full w-16 h-8 mx-auto mb-4"
+              style={{ backgroundColor: 'rgba(255, 255, 255, 0.5)' }} // 50% 투명도 적용
+            >
               오늘
             </div>
 
@@ -68,11 +108,16 @@ const FinalScreen = () => {
               {messages.map((message, index) => (
                 <div
                   key={index}
-                  className={`p-2 rounded-xl max-w-[70%] ${
+                  className={`p-2 max-w-[70%] ${
                     message.isUser
                       ? 'bg-white self-end text-right'
                       : 'bg-yellow-400 self-start text-left'
                   }`}
+                  style={{
+                    borderRadius: message.isUser
+                      ? '28px 28px 0px 28px' // 오른쪽 하단 모서리만 라운디드 적용 안 함
+                      : '28px 28px 28px 0px', // 왼쪽 하단 모서리만 라운디드 적용 안 함
+                  }}
                 >
                   <div className="text-sm font-semibold">{message.text}</div>
                 </div>
@@ -95,7 +140,7 @@ const FinalScreen = () => {
               onClick={handleSend}
               className="text-black p-1 rounded-full mr-1 h-[24px] w-[24px]"
               style={{
-                backgroundImage: `url('/assets/TextSend.png')`,
+                backgroundImage: `url('/assets/FinalScreen/TextSend.png')`,
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
               }}
